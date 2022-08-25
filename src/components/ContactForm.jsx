@@ -15,6 +15,8 @@ const ContactForm = (props) => {
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
+  const [submitted, setSubmitted] = useState(false);
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
@@ -37,23 +39,27 @@ const ContactForm = (props) => {
         setErrorMessage(false);
     }
 
-    console.log("clicked");
+    setName('');
+    setEmail('');
+    setMessage('');
+
+    setSubmitted(true);
+
   };
 
   const onChangeNameHandler = (event) => {
     setName(event.target.value);
-    console.log(name);
   };
 
   const onChangeMessageHandler = (event) => {
     setMessage(event.target.value);
-    console.log(message);
   };
 
   const onChangeEmailHandler = (event) => {
     setEmail(event.target.value);
-    console.log(email);
   };
+
+  const submittedMessage = 'The form is submitted!';
 
   return (
     <form className={classes["contact-form"]} onSubmit={onSubmitHandler}>
@@ -92,6 +98,9 @@ const ContactForm = (props) => {
         errorMessage={errorMessage}
       />
       <Button class="btn btn-primary" type="submit" text="Send Message" />
+      <div style={{paddingTop: '10px'}}>
+        <span style={{color: 'green', fontWeight: '500'}}>{submitted && submittedMessage}</span>
+      </div>
     </form>
   );
 };
