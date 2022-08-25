@@ -1,8 +1,15 @@
+import ContactForm from "./components/ContactForm";
 
 function App() {
   return (
     <div className="App">
-      app is running
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
